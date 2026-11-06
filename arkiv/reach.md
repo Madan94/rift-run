@@ -2,7 +2,7 @@
 
 Audience: ETHGlobal attendees and interactive-event hosts who want a crowd to influence one visible venue mission. Potential integrators are small game/event developers interested in wallet-owned shared world structures.
 
-Deployment target: https://rift-run-mumbai-2026.madhanxdev.chatgpt.site with /play and /crowd. Publication requires a successful deployment result. Browser/phone gameplay and live Arkiv intervention proof remain unverified in the current evidence record.
+Public website: https://rift-run-mumbai-2026.madhanxdev.chatgpt.site with /play and /crowd. Native Sites publication succeeded on 6 November 2026. Browser/phone gameplay and live Arkiv intervention proof remain unverified in the current evidence record.
 
 ## Can users try it today?
 

@@ -1,6 +1,6 @@
 # RIFT RUN — next-stage plan
 
-**Status: IMPLEMENTED LOCALLY. User approved this plan; live Arkiv acceptance is blocked by test-wallet funding and missing access-key setup. Public deployment and browser verification are tracked separately below.**
+**Status: IMPLEMENTED AND PUBLISHED. User approved this plan; native Sites publication succeeded. Live Arkiv acceptance is blocked by test-wallet funding and missing access-key setup. Browser verification remains open.**
 
 Updated: 6 November 2026 (IST). Deadline: **7 November 2026, 09:00 IST**. Target submission: **08:00 IST**. Track: **Arkiv — Build on Arkiv (from scratch)**.
 
@@ -27,7 +27,7 @@ This plan supersedes badge collection and designated-editor voting. The original
 | Crowd Editor | Direct-wallet UI implemented | Registration/publishing states and same-browser shared simulated edits. |
 | Guest vote service | Unused historical source | Not required by the release website. |
 | Automated checks | Passing | Typecheck and **38 tests** pass, including task rules, roster freeze, invite isolation, simulation and actual route shortening. |
-| Production builds | One-site build passes | Root dist includes /, /play/ and /crowd/. Native publication still needs confirmation. |
+| Production builds | One-site build and publication pass | Root dist includes /, /play/ and /crowd/. Initial native publication from 68fd4d7 succeeded; see docs/evidence.md. |
 | Rabdi RPC | Read-only request succeeded | Preflight observed block **288483**; not write/expiry proof. |
 | Access key | Missing | No key configured. |
 | Four script wallets | Present, unfunded | Preflight reports **0 tGLM in all four**. Keys remain in ignored local .env. |
@@ -172,7 +172,8 @@ Local script addresses below were observed at zero tGLM. **They have not written
 - [ ] Verify 390 px mobile layout and projector readability. Prior automation stopped at browser URL verification; obtain actual supported/manual evidence rather than claiming a pass.
 - [ ] Rabdi proof: three writers, conflict, before/after native expiry, fresh clients and matching input/world hashes.
 - [ ] Measure confirmation/read delay and quota behavior; state observed limits.
-- [ ] Public HTTPS deployment; verify the actual phone QR and wallet flow.
+- [x] Public HTTPS deployment: native Sites reports succeeded, public audience, one origin with /play and /crowd.
+- [ ] Verify the actual phone QR and wallet flow.
 - [x] Replace README stub with setup, runnable query entry point, architecture, limits and asset/AI credits. Actual writer addresses stay explicitly pending.
 - [x] Write all five Arkiv documents with actual local findings and honest missing evidence.
 - [ ] Fill real writer/entity/transaction keys, native expiry evidence, measured reach and demo timestamps after live execution.

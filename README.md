@@ -17,7 +17,7 @@ npm.cmd run dev
 - Home: http://localhost:5173/
 - Runner: http://localhost:5173/play
 - Crowd: http://localhost:5173/crowd
-- Deployment target: https://rift-run-mumbai-2026.madhanxdev.chatgpt.site (check deployment evidence/status before presenting it as a verified live Arkiv demo).
+- Public website: https://rift-run-mumbai-2026.madhanxdev.chatgpt.site — native Sites publication succeeded. This verifies deployment, not live Arkiv gameplay; see the evidence record.
 
 One Vite process serves both views. The old guest-vote server is not required. Build with `npm.cmd run build`; the static artifact is `dist/`, including direct `/play/` and `/crowd/` entry files. `npm.cmd run preview` serves the production build on port 4173.
 
