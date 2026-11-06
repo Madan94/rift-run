@@ -1,6 +1,6 @@
 # RIFT RUN — next-stage plan
 
-**Status: READY FOR USER REVIEW. Application implementation is paused until review.**
+**Status: IMPLEMENTED LOCALLY. User approved this plan; live Arkiv acceptance is blocked by test-wallet funding and missing access-key setup. Public deployment and browser verification are tracked separately below.**
 
 Updated: 6 November 2026 (IST). Deadline: **7 November 2026, 09:00 IST**. Target submission: **08:00 IST**. Track: **Arkiv — Build on Arkiv (from scratch)**.
 
@@ -21,22 +21,22 @@ This plan supersedes badge collection and designated-editor voting. The original
 | Area | Current state | Evidence / remaining limit |
 |---|---|---|
 | Repository scaffold | Implemented | npm workspaces, TypeScript, lockfile, MIT license and ignored .env. |
-| Shared protocol | Implemented and unit-tested | Provenance, roles, phase, expiry, active caps, conflicts, hashes and safe routes. |
-| Arkiv adapter | Implemented; live writes unproven | SDK 1.0.1, browser signing, direct queries, pagination and spike scripts. |
-| Runner | Local practice implemented | Movement, collisions, badges, timer and finish. Browser gameplay remains unverified. |
-| Crowd Editor | Local practice implemented | Team/site selection and publishing code. Simulated edits currently stay in their own tab. |
-| Guest vote service | Implemented; superseded | Leaves the main flow in this release. |
-| Automated checks | Passing | Typecheck and all **21 tests** re-run successfully during this review. |
-| Production builds | Passed earlier | Both frontends built successfully; no public deployment yet. |
-| Rabdi RPC | Read-only request succeeded | Preflight observed block **287613** during this review; not write/expiry proof. |
+| Shared protocol | v2 implemented and unit-tested | Self-owned registrations, fixed roster, provenance, phases, expiry, caps, conflicts and hashes. |
+| Arkiv adapter | v2 implemented; live writes unproven | Lobby, registration, round discovery/start, participant signing, direct queries and updated spike. |
+| Runner | Checkpoint mission implemented | Check-in, three-second build, mentor review and stage delivery; actual browser gameplay remains unverified. |
+| Crowd Editor | Direct-wallet UI implemented | Registration/publishing states and same-browser shared simulated edits. |
+| Guest vote service | Unused historical source | Not required by the release website. |
+| Automated checks | Passing | Typecheck and **38 tests** pass, including task rules, roster freeze, invite isolation, simulation and actual route shortening. |
+| Production builds | One-site build passes | Root dist includes /, /play/ and /crowd/. Native publication still needs confirmation. |
+| Rabdi RPC | Read-only request succeeded | Preflight observed block **288483**; not write/expiry proof. |
 | Access key | Missing | No key configured. |
 | Four script wallets | Present, unfunded | Preflight reports **0 tGLM in all four**. Keys remain in ignored local .env. |
-| Git history | Initial commit only | New implementation files remain uncommitted. |
-| Judging materials | Incomplete | README remains a stub; Arkiv files, live evidence, video and submission are pending. |
+| Git history | Baseline preserved | Commit 8f46396 captures the initial prototype; v2 implementation is committed before deployment. |
+| Judging materials | Evidence-aware drafts written | README, five Arkiv files, AI disclosure and evidence status. Actual chain keys, human feedback, video and submission remain pending. |
 
 Checkboxes mean verified completion. Keep local, browser and real-chain evidence separate.
 
-## 3. Proposed checkpoint mission — for review
+## 3. Agreed checkpoint mission
 
 Keep a two-minute round. In live mode, time is estimated from the pinned round's blocks. One runner starts at Entry; Builders and Breakers alter useful routes through temporary Arkiv structures.
 
@@ -53,11 +53,11 @@ Keep a two-minute round. In live mode, time is estimated from the pinned round's
 - Movement and task progress remain offchain local gameplay. Do not claim a verified onchain score or cheat-proof mission.
 - BRIDGE opens a crossing; WALL blocks one legal cell. Edits must change a meaningful route/task approach while preserving an alternate route and safe respawn.
 - Pause movement and interaction progress during stale live reads. Reaching Main Stage early does not win.
-- These task details are proposals awaiting review.
+- Task details were approved by the user before this implementation.
 
-## 4. Proposed participant onboarding and authorization
+## 4. Participant onboarding and authorization
 
-The current code accepts pinned, host-created memberships. Connecting any funded wallet is not sufficient yet. Replace this with a **wallet lobby followed by a fixed roster for each round**:
+The v2 code replaces v1 host-created memberships with a **wallet lobby followed by a fixed roster for each round**:
 
 1. Host creates a lobby with world/round identifiers and pinned host identity.
 2. Participant opens /crowd, connects their wallet, switches to Rabdi and chooses a team.
@@ -67,7 +67,7 @@ The current code accepts pinned, host-created memberships. Connecting any funded
 6. Roster members publish their edits; **the host never signs or approves individual participant edits**.
 7. Late joins and role changes enter the next round. Explain this before requesting a transaction.
 
-Proposed initial capacity: **16 wallets per round**, with a visible capacity/waiting state. First prove three participant wallets; measure RPC quota before raising capacity. This roster policy and capacity await review.
+Agreed initial capacity: **16 wallets per round**, with visible capacity/waiting state. First prove three participant wallets; measure RPC quota before raising capacity. Capacity is not measured human turnout.
 
 Protocol requirements:
 
@@ -127,8 +127,8 @@ Local script addresses below were observed at zero tGLM. **They have not written
 - [x] Inspect current source and refresh typecheck/unit-test evidence.
 - [x] Verify setup instructions and funding blockers.
 - [x] Record user choices and prepare this review plan.
-- [ ] User reviews checkpoint tasks, lobby policy and scope.
-- [ ] Make a meaningful baseline Git commit without secrets/build output.
+- [x] User reviews checkpoint tasks, lobby policy and scope.
+- [x] Make a meaningful baseline Git commit without secrets/build output (8f46396; staged secret scan passed).
 - [ ] User configures the access key and funds test accounts; preflight passes.
 - [ ] Prove one entity create/read and capture actual key, transaction, creator, owner and expiry.
 
@@ -136,45 +136,46 @@ Local script addresses below were observed at zero tGLM. **They have not written
 
 ### P1 — participant-owned registration and live edits
 
-- [ ] Version and implement lobby, self-registration and immutable roster configuration.
-- [ ] Implement host start/rematch controls gated by the host wallet.
-- [ ] Let each roster participant sign their own authorized operations.
-- [ ] Handle indexer lag, moving-block scans, phase failures, expiry and stale state honestly.
-- [ ] Update spike scripts for the new flow and save evidence incrementally.
+- [x] Version and implement lobby, self-registration and immutable roster configuration (v2 types and domain tests).
+- [x] Implement host start/rematch controls gated by the host wallet (source/typechecked; browser acceptance pending).
+- [x] Implement participant signing for authorized operations (source/typechecked; real transactions pending).
+- [x] Implement indexer lag, scan/phase errors, expiry and stale-state handling; local tests pass.
+- [x] Update spike scripts for self-owned registration and serialized incremental evidence saving.
 
 **Acceptance:** three distinct writers, filtered read-back, deterministic conflicts and observed native expiry. Browser confirmation is recorded separately from script proof.
 
 ### P2 — consolidate the website
 
-- [ ] One origin/build for /, /play and /crowd, with working direct reloads.
-- [ ] Same-origin QR/navigation; wallet account/network changes and phone onboarding.
-- [ ] Wallet-first Crowd UI: role, balance, site selection and pending/read/accepted/rejected status.
-- [ ] Independent readers and matching hashes after convergence.
-- [ ] Remove voting/publisher requirements from the release path.
+- [x] One origin/build for /, /play and /crowd; local HTTP 200 checks and static route artifacts pass.
+- [x] Implement same-origin QR/navigation and wallet change handling; phone/provider acceptance pending.
+- [x] Implement wallet-first Crowd UI with balance, role, site and transaction/read status.
+- [x] Independent reader code and local matching-hash tests; actual browser/Rabdi comparison remains open in P4.
+- [x] Remove voting/publisher requirements from the release path.
 
 **Acceptance:** both views work from one website; no guest vote server is required to reconstruct the Arkiv world.
 
 ### P3 — checkpoint mission
 
-- [ ] Replace all badge collectibles, counters and instructions with the agreed tasks.
-- [ ] Add task order, interaction zones, hold/reset behavior and stage completion.
-- [ ] Add keyboard/touch prompts and useful objective/map feedback.
-- [ ] Verify edits affect useful routes while checkpoints remain reachable.
-- [ ] Correct practice start/pause/rematch behavior; live timing follows the pinned round.
+- [x] Replace badge collectibles, counters and instructions with the agreed tasks.
+- [x] Add tested task order, interaction zones, hold/reset behavior and stage completion.
+- [x] Implement keyboard/touch prompts and objective/map feedback; browser layout acceptance pending.
+- [x] Verify central bridge shortens the route by more than 10 tiles and all legal wall sets preserve task access.
+- [x] Correct practice idle/start/shared-tab/rematch rules and pause behavior in local tests; live timing code uses the pinned round.
 
 **Acceptance:** tasks cannot be skipped or completed remotely; paused gameplay cannot advance; Main Stage requires all tasks; a crowd edit changes a traversal decision.
 
 ### P4 — verify, deploy and prepare submission
 
-- [ ] Extend tests for forged/self-owned registration, roster freeze, late joins, roles and rematches.
-- [ ] Test checkpoint ordering, progress reset, pause, respawn, timeout and finish.
+- [x] Extend local tests for forged/self-owned registration, roster freeze, late joins, roles and practice rematches.
+- [x] Test checkpoint ordering, progress reset, pause, timeout and finish; actual movement/respawn needs browser smoke.
 - [ ] Browser smoke: movement/mission, publishing, rejection, account changes and direct route reload.
 - [ ] Verify 390 px mobile layout and projector readability. Prior automation stopped at browser URL verification; obtain actual supported/manual evidence rather than claiming a pass.
 - [ ] Rabdi proof: three writers, conflict, before/after native expiry, fresh clients and matching input/world hashes.
 - [ ] Measure confirmation/read delay and quota behavior; state observed limits.
 - [ ] Public HTTPS deployment; verify the actual phone QR and wallet flow.
-- [ ] Replace README stub: setup, actual writer addresses, runnable query, architecture, limits and asset/AI credits.
-- [ ] Complete arkiv/schema.md, friction.md, reach.md, why-arkiv.md and how-you-use-arkiv.md with real evidence.
+- [x] Replace README stub with setup, runnable query entry point, architecture, limits and asset/AI credits. Actual writer addresses stay explicitly pending.
+- [x] Write all five Arkiv documents with actual local findings and honest missing evidence.
+- [ ] Fill real writer/entity/transaction keys, native expiry evidence, measured reach and demo timestamps after live execution.
 - [ ] Record human-narrated 2–4 minute >=720p demo; no speed-up or synthetic voice.
 - [ ] User submits to ETHGlobal with Arkiv selected; verify submitted state before deadline.
 
@@ -191,12 +192,12 @@ Local script addresses below were observed at zero tGLM. **They have not written
 
 ## 9. Time gates and review boundary
 
-1. **Now:** user review. Only plan.md changes in this planning step; application code stays unchanged.
-2. **After review:** P0/P1 first. P2/P3 can proceed while external setup is handled; live criteria remain unchecked until proof passes.
+1. **Now:** approved implementation is complete locally. Finish public deployment/verification and unblock funded live testing.
+2. Live criteria remain unchecked until actual onchain and real-device evidence exists.
 3. **By 06:00 IST on 7 November:** feature freeze. Preserve the live edit/read/expiry loop, one website and a small checkpoint mission.
 4. **06:00–08:00 IST:** deployment checks, evidence, documentation, recording and submission.
 5. **08:00–09:00 IST:** upload/form buffer. Deadline: **09:00 IST**.
 
 Scope cuts: synchronized practice backend, online presence, extra powers, standalone inspector, animation polish and elaborate scoring. Preserve direct-wallet participation and the checkpoint mission.
 
-**Next action: user review, especially the three proposed tasks and the pre-round wallet lobby.**
+**Next external action: obtain the Rabdi access key and fund the test wallets using section 6, then run preflight/spike and a real-device live round.**

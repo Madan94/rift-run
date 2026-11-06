@@ -3,21 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "workspaces": ["apps/*", "packages/*", "server/*"],
-  "engines": { "node": ">=22.12.0" },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "server/*"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "npm run dev --workspace @riftrun/runner",
-    "dev:runner": "npm run dev --workspace @riftrun/runner",
-    "dev:crowd": "npm run dev --workspace @riftrun/crowd",
-    "dev:guests": "tsx server/guest-channel/src/index.ts",
+    "dev": "npm run dev --workspace @riftrun/web",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "build": "npm run build --workspace @riftrun/runner && npm run build --workspace @riftrun/crowd",
+    "build": "npm run build --workspace @riftrun/web",
+    "preview": "npm run preview --workspace @riftrun/web",
     "check": "npm run typecheck && npm test && npm run build",
     "preflight": "tsx scripts/preflight.ts",
     "wallets:create": "tsx scripts/create-test-wallets.ts",
     "spike": "tsx scripts/testnet-spike.ts",
-    "read:world": "tsx scripts/read-world.ts"
+    "read:world": "tsx scripts/read-world.ts",
+    "secrets:check": "tsx scripts/check-secrets.ts"
   },
   "dependencies": {
     "@arkiv-network/sdk": "1.0.1",
