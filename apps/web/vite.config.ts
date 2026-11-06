@@ -6,6 +6,14 @@ export default defineConfig({
   build: {
     outDir: "../../dist",
     emptyOutDir: true,
-    rollupOptions: { output: { manualChunks: { phaser: ["phaser"] } } },
+    rollupOptions: {
+      output: {
+        onlyExplicitManualChunks: true,
+        manualChunks(id) {
+          if (id.includes("commonjsHelpers")) return "runtime";
+          if (id.includes("/node_modules/phaser/")) return "phaser";
+        },
+      },
+    },
   },
 });
