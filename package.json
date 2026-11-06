@@ -1,0 +1,43 @@
+{
+  "name": "rift-run",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*", "server/*"],
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "npm run dev --workspace @riftrun/runner",
+    "dev:runner": "npm run dev --workspace @riftrun/runner",
+    "dev:crowd": "npm run dev --workspace @riftrun/crowd",
+    "dev:guests": "tsx server/guest-channel/src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build": "npm run build --workspace @riftrun/runner && npm run build --workspace @riftrun/crowd",
+    "check": "npm run typecheck && npm test && npm run build",
+    "preflight": "tsx scripts/preflight.ts",
+    "wallets:create": "tsx scripts/create-test-wallets.ts",
+    "spike": "tsx scripts/testnet-spike.ts",
+    "read:world": "tsx scripts/read-world.ts"
+  },
+  "dependencies": {
+    "@arkiv-network/sdk": "1.0.1",
+    "dotenv": "^17.2.0",
+    "phaser": "^3.90.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "viem": "^2.38.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}

@@ -1,0 +1,1 @@
+{"name":"@riftrun/crowd","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"vite --host 0.0.0.0 --port 5174 --strictPort","build":"vite build"},"dependencies":{"@riftrun/world-protocol":"*","@riftrun/arkiv-adapter":"*"}}
